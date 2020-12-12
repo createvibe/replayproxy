@@ -1,0 +1,52 @@
+{
+  "name": "@createvibe/replayproxy",
+  "version": "1.0.0",
+  "description": "Track changes to any JavaScript object or array and allow undo and playback for all operations.",
+  "main": "lib/replayproxy.js",
+  "engines": {
+    "node": "^14.15.1"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "undo",
+    "redo",
+    "track",
+    "record",
+    "play",
+    "playback",
+    "rebuild",
+    "reconstruct",
+    "observe",
+    "observer",
+    "proxy",
+    "reactive",
+    "watch",
+    "watcher",
+    "object",
+    "path",
+    "deep",
+    "nested",
+    "changes",
+    "change",
+    "modifications",
+    "modify"
+  ],
+  "author": {
+    "name": "Anthony Matarazzo",
+    "email": "email@anthonym.us",
+    "url": "http://anthony.technology"
+  },
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/createvibe/replay.git"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3"
+  },
+  "dependencies": {
+    "@createvibe/proxyobserver": "^1.2.0"
+  }
+}
