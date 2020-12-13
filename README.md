@@ -17,6 +17,14 @@ Methods are exposed directly on the proxy object that is returned.
 - `breakpoint` -  Get a breakpoint at the current position
 - `record` - Record a new observed changes
 
+# Installation
+
+Using NPM to install the package.
+
+```
+npm install --save @createvibe/replayproxy
+```
+
 ## Usage
 
 Pass your object to `replayproxy` and capture the object that is returned.
@@ -25,7 +33,7 @@ The response is a `Proxy` object that will monitor your changes.
 You can pass a call back to intercept changes on the proxy object.
 
 ```
-const reaplayproxy = require('@createvibe/replayproxy');
+const replayproxy = require('@createvibe/replayproxy');
 
 const data = {initializing: true};
 const proxy = replayproxy(data, function() {
@@ -49,7 +57,7 @@ This can be a new fresh object, or it can be an existing object from your applic
 Pass this new or existing object reference to the `replay` method and all the changes will be repsented on your new object.
 
 ```
-const reaplayproxy = require('@createvibe/replayproxy');
+const replayproxy = require('@createvibe/replayproxy');
 
 const data = {initializing: true};
 const proxy = replayproxy(data, function() {
@@ -77,7 +85,7 @@ the new object reference passed to `replay`.
 ### Undo a Single Change
 
 ```
-const reaplayproxy = require('@createvibe/replayproxy');
+const replayproxy = require('@createvibe/replayproxy');
 
 const data = {initializing: true};
 const proxy = replayproxy(data, function() {
@@ -99,7 +107,7 @@ proxy.undo();
 ### Rollback All Changes
 
 ```
-const reaplayproxy = require('@createvibe/replayproxy');
+const replayproxy = require('@createvibe/replayproxy');
 
 const data = {initializing: true};
 const proxy = replayproxy(data, function() {
@@ -117,6 +125,41 @@ proxy.rollback();
 // proxy.data === undefined
 ```
 
+#### Rollback From Error State
+
+```
+const replayproxy = require('@createvibe/replayproxy');
+
+const data = {};
+let proxy = replayproxy(data);
+
+/* do something with data */
+
+// data is dirty, create a breakpoint before we do something that might fail
+const breakpoint = proxy.breakpoint();
+
+// do dangerous task
+try {
+
+    performPotentialDangerousTask();
+
+} catch (err) {
+    
+    console.error(err);
+    
+    // rollback to our breakpoint!
+    proxy.rollback(breakpoint);
+
+}
+
+// you can dismiss the proxy now to let garbage collection to free up memory from stored references
+proxy = null;
+
+
+/* continue working with data instead of proxy */
+
+```
+
 ### Breakpoints
 
 Breakpoints tell the system to stop traversing when a specific action index is reached.
@@ -128,7 +171,7 @@ Breakpoints can be retrieved by using the `breakpoint` method.
 You can `rollback` to an earlier breakpoint.
 
 ```
-const reaplayproxy = require('@createvibe/replayproxy');
+const replayproxy = require('@createvibe/replayproxy');
 
 const data = {initializing: true};
 const proxy = replayproxy(data, function() {
@@ -157,7 +200,7 @@ proxy.rollback(breakpoint);
 You can `replay` changes up to a specific breakpoint.
 
 ```
-const reaplayproxy = require('@createvibe/replayproxy');
+const replayproxy = require('@createvibe/replayproxy');
 
 const data = {initializing: true};
 const proxy = replayproxy(data, function() {

@@ -47,6 +47,6 @@
     "jest": "^26.6.3"
   },
   "dependencies": {
-    "@createvibe/proxyobserver": "^1.2.0"
+    "@createvibe/proxyobserver": "~1.2.0"
   }
 }
