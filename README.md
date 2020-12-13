@@ -127,6 +127,8 @@ proxy.rollback();
 
 #### Rollback From Error State
 
+See it on RunKit [https://runkit.com/createvibe/5fd58c1738b24600135a3bcf](https://runkit.com/createvibe/5fd58c1738b24600135a3bcf).
+
 ```
 const replayproxy = require('@createvibe/replayproxy');
 
