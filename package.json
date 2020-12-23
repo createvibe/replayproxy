@@ -1,6 +1,6 @@
 {
   "name": "@createvibe/replayproxy",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Track changes to any JavaScript object or array and allow undo and playback for all operations.",
   "main": "lib/replayproxy.js",
   "engines": {
@@ -41,7 +41,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/createvibe/replay.git"
+    "url": "https://github.com/createvibe/replayproxy.git"
   },
   "devDependencies": {
     "jest": "^26.6.3"
